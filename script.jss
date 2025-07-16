@@ -4,7 +4,14 @@ const quoteScreen = document.getElementById("quoteScreen");
 const audio = document.getElementById("bgMusic");
 
 playBtn.addEventListener("click", () => {
-  audio.play();
-  intro.classList.add("hidden");
-  quoteScreen.classList.remove("hidden");
+  console.log("Play button clicked");
+  audio.play()
+    .then(() => {
+      intro.classList.add("hidden");
+      quoteScreen.classList.remove("hidden");
+    })
+    .catch(error => {
+      console.log("Audio play failed:", error);
+      alert("Autoplay blocked. Please try clicking again.");
+    });
 });
